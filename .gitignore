@@ -1,0 +1,9 @@
+Documentation/html
+Documentation/latex
+Documentation/doxygen_sqlite3.db
+testmnt/
+trash/
+out/*
+out-macos/*
+*.swp
+*.swo

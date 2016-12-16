@@ -1,0 +1,28 @@
+---
+- dcel:
+	dcelno: 12
+	fragment:
+	        role: container
+		content:
+			- role: content
+			  source: "file://host/example#1-10"
+			- role: content
+			  source: "file://host/example#11-20"
+	prodinstr: "sourcerer file://host/example"
+- dcel:
+	dcelno: 13
+	fragment:
+		role: container
+		content:
+			- role: content
+			  source: "file://host/example#1-10" 
+	prodinstr: "deviner -dcelno 12 -select #1-10"
+- dcel:
+	dcelno: 14
+	fragment: 
+		role: container
+		content:
+			- role: content
+			  source: "mem://host/FFFA5901#0-256"
+	prodinstr: "alchemist -dcelno 13 -translate lowercase"
+

@@ -1,0 +1,49 @@
+strict graph "src layout" {
+	graph [margin = "0",
+		nodesep = .4,
+		ranksep = 1,
+		rankdir = LR,
+		center = 1,
+		splines = line]
+
+	node [shape = box]
+	edge [color = black, minlen=1]
+	"Snafu/src"
+	-- {
+		"gridhostd"
+		"hnfc"
+		"libaddr"
+		"libgrid"
+		"modules"
+		"snafu"
+		"types"
+	}
+	"gridhostd" -- "address data"
+	"libgrid"
+	-- subgraph {
+		"gridclient"
+		"gridhost"
+		"gridsocket"
+		"hiena"
+		"cosmos"
+	}
+	"modules"
+	-- {
+		"server"
+		"lookup"
+	}
+	"server"
+	-- {
+		"file"
+		"ssh"
+		"mem"
+	}
+	"lookup"
+	-- "fudge"
+	"types"
+	-- {
+		"ox"
+		"raymarks"
+		"yaml"
+	}
+}

@@ -1,0 +1,95 @@
+strict digraph {
+	node [shape = box]
+
+	subgraph "cluster socket" {
+		graph [style=dotted
+			label="gridsocket"
+			]
+		edge [style=invis]
+
+		"Grid Host Protocol"
+		"Grid Client Protocol"
+
+		"gridsocket"
+	}
+	edge [weight=10]
+	"gridsocket" -> "gridhost"
+	"Grid Client Protocol" -> "gridclient", "gridhost"
+		, "gridhost"
+	"gridsocket" -> "gridclient"
+	"Grid Host Protocol" -> "gridhost"
+
+
+	subgraph "cluster libgrid" {
+		graph [style=dotted
+			label="libgrid"
+			]
+		"gridhost"
+		"gridclient"
+	}
+	"gridhost" -> "liblookup"
+	"gridhost" -> "gridhostd"
+	"gridclient" -> "snafu"
+
+
+	"grid instruction" [label="grid instruction/
+			production instruction"]
+	"grid instruction" -> "mapping engine"
+	   , "fragment", "dcel", "gridhost", "liblookup"
+
+
+	subgraph "cluster hiena" {
+		graph [style=dotted]
+
+		edge [style=invis]
+		"mapping engine"
+		-> "dcel"
+		-> "fragment"
+		-> "producer interface"
+		-> "hiena"
+	}
+	"dcel" -> "grid instruction" -> "dcel"
+	"hiena" -> "grid instruction"
+	"fragment" -> "dcel"
+
+
+	subgraph "cluster cosmos" {
+		graph [style=dotted
+			label="Cosmos
+			(design near ready)"
+			]
+		"cosmos" [label="Cascade fn"]
+		"aframe" [label="Aframe"]
+	}
+	"aframe" -> "gridhost"
+	"cosmos" -> "liblookup"
+	"aframe" -> "liblookup"
+
+
+	"libserver" -> "hiena", "server modules"
+	"types" -> "mapping engine"
+	"liblookup" -> "gridhost"
+	"hnfc" -> "types"
+	"libaddr" -> "libserver"
+		, "grid instruction", "fragment", "gridhost"
+
+		"snafu" [style=bold]
+		"gridhostd" [style=bold]
+
+	"server modules" [style=bold]
+	"hnfc" [style=bold]
+
+	"liblookup" -> "lookupmodule"
+	"lookupmodule" [style=bold]
+
+
+	
+
+	graph [label = "development feeds",
+	      pad = .5,
+	      pack = true,
+	      nodesep = 2,
+	       outputMode=edgesfirst,
+	       ranksep = .5,
+		splines = spline]
+}

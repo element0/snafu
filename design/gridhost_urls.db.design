@@ -1,0 +1,34 @@
+name
+	gridhost urls database design
+
+
+description
+	database to keep URL's managed by gridhost
+
+
+url database grammar
+
+	urldb::entry := protocol, host, pathname, 
+
+grid global url database example
+
+	ghost://raygan@bangfish:/home/raygan/Cosms/Nathan, users(nathan)
+	ssh://raygan@flyboy:/Users/raygan/Cosms/Nathan, users(nathan)
+	ssh://raygan@kame2:/home/raygan/Cosms/Nathan, users(nathan)
+	ghost://raygan@kame3:/home/raygan/Cosms/Nathan, users(nathan)
+	ghost://raygan@kame4:/home/raygan/Cosms/Nathan, users(nathan)
+
+
+local mountsource example database
+
+	ghost://raygan@bangfish:/home/raygan/Cosms/Nathan
+		file:///var/snafu/mountsource/home/raygan/Cosms/Nathan
+
+
+user database example
+	raygan :
+		{authentication object}
+		{authorization object}
+	nathan :
+		{authentication object}
+		{authorization object}

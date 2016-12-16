@@ -1,0 +1,34 @@
+strict digraph {
+	node [shape=box]
+	filepath1 -> "snafu mounter" -> filepath2 -> gridclient
+
+	filepath1,filepath2,
+		filepath3,filepath4 [height=.2, fontname="times-italic"]
+
+	filepath1 [label="filepath"]
+	filepath2 [label="filepath"]
+	filepath3 [label="file://<host>/<absolutepath>"]
+	filepath4 [label="file://<host>/<absolutepath>"]
+	"gridclient_protocol msg"
+
+
+	"snafu mounter"	[style=bold]
+	"gridclient"	[style=bold
+			 label="grid_filepath_to_URL()" ]
+
+	node [style=bold]
+	"gridclient"
+	-> filepath3
+	-> "gridclient_addurl()"
+	-> "gridclient_protocol msg"
+	-> gridsocket
+	-> "gridhost::interp_gridclient_msg()"
+	-> "grid_addurl()"
+	-> filepath4
+	-> addressdb_input [label="addressdb"]
+
+	addressdb
+
+
+	gridsocket [style=dashed]
+}
