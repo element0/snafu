@@ -8,6 +8,9 @@ Snafu is a file system which:
 - binds existing local and remote sources into one distributed file system
 - creates file paths into data structures inside any file
 
+[November 2022 - This project has been changed to Laydbug.io. Currently a private repo.]
+
+
 The sources are represented by **addresses**.
 
 The addresses are accessed via **server modules**.
